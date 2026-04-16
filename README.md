@@ -113,6 +113,20 @@ For full-stack deployment, you can:
 2. Deploy frontend to static hosting
 3. Update API URLs in frontend to point to deployed backend
 
+### Deploying to GitHub
+- Push the repository to GitHub to store your code.
+- Deploy the frontend separately using GitHub Pages, Vercel, or Netlify.
+- Host the backend on a service that supports Node/Express (Railway, Render, Heroku, etc.).
+- GitHub Pages cannot serve the backend, so the backend must still run on a server.
+
+### MongoDB Atlas
+- Create a free cluster at https://www.mongodb.com/cloud/atlas
+- Add your application IP address or use `0.0.0.0/0` for development access
+- Copy the connection string and set it in `backend/.env` as `MONGO_URI`
+- Example:
+  `MONGO_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/<dbname>?retryWrites=true&w=majority`
+- The backend already reads `process.env.MONGO_URI`, so no code change is needed.
+
 ## Environment Variables
 
 ### Backend (.env)
