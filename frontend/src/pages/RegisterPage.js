@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API from "../api/axios";
+import "../styles/RegisterPage.css";
 
 function RegisterPage() {
 
@@ -125,121 +126,146 @@ function RegisterPage() {
 
   return (
     <section className="register-container">
+      <div className="register-wrapper">
+        <div className="register-content">
+          <h2>Join My Community</h2>
+          <p>
+            Sign up to stay updated with my latest web development projects,
+            tutorials, and portfolio improvements. Get exclusive access to
+            behind-the-scenes content and early project announcements.
+          </p>
 
-      <h2>Sign Up for Updates</h2>
+          <div className="register-image">
+            <img src="/assets/decorative.jpg" alt="Web development illustration" />
+          </div>
+        </div>
 
-      <p>
-        By signing up, you’ll receive updates about my latest web development
-        projects and portfolio improvements.
-      </p>
+        <div className="register-form-card">
+          <h3>Create Your Account</h3>
 
-      <div className="form-image">
-        <img src="/assets/decorative.jpg" alt="Web development illustration" />
+          <form onSubmit={validateForm}>
+            <div className="form-row">
+              <div className="form-group">
+                <label>Full Name</label>
+                <input
+                  type="text"
+                  value={fullname}
+                  onChange={(e) => setFullname(e.target.value)}
+                  placeholder="Enter your full name"
+                />
+                <span className="error">{errors.fullname}</span>
+              </div>
+
+              <div className="form-group">
+                <label>Username</label>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Choose a username"
+                />
+                <span className="error">{errors.username}</span>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label>Email Address</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+              />
+              <span className="error">{errors.email}</span>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Create a password"
+                />
+                <span className="error">{errors.password}</span>
+              </div>
+
+              <div className="form-group">
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Confirm your password"
+                />
+                <span className="error">{errors.confirmPassword}</span>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label>Date of Birth</label>
+              <input
+                type="date"
+                value={dob}
+                onChange={(e) => setDob(e.target.value)}
+              />
+              <span className="error">{errors.dob}</span>
+            </div>
+
+            <div className="form-group">
+              <label>Interest Level</label>
+              <div className="radio-group">
+                <label className="radio-option">
+                  <input
+                    type="radio"
+                    value="beginner"
+                    checked={level === "beginner"}
+                    onChange={(e) => setLevel(e.target.value)}
+                  />
+                  <span>Beginner - Just getting started</span>
+                </label>
+
+                <label className="radio-option">
+                  <input
+                    type="radio"
+                    value="intermediate"
+                    checked={level === "intermediate"}
+                    onChange={(e) => setLevel(e.target.value)}
+                  />
+                  <span>Intermediate - Some experience</span>
+                </label>
+
+                <label className="radio-option">
+                  <input
+                    type="radio"
+                    value="expert"
+                    checked={level === "expert"}
+                    onChange={(e) => setLevel(e.target.value)}
+                  />
+                  <span>Expert - Advanced developer</span>
+                </label>
+              </div>
+              <span className="error">{errors.level}</span>
+            </div>
+
+            <div className="checkbox-group">
+              <input
+                type="checkbox"
+                checked={terms}
+                onChange={(e) => setTerms(e.target.checked)}
+                id="terms"
+              />
+              <label htmlFor="terms">
+                I agree to the terms and conditions and privacy policy
+              </label>
+            </div>
+            <span className="error">{errors.terms}</span>
+
+            <button type="submit" className="btn">Create Account</button>
+          </form>
+        </div>
       </div>
-
-      <form onSubmit={validateForm}>
-
-        <label>Full Name:</label>
-        <input
-          type="text"
-          value={fullname}
-          onChange={(e) => setFullname(e.target.value)}
-        />
-        <span className="error">{errors.fullname}</span>
-
-        <label>Preferred Username:</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <span className="error">{errors.username}</span>
-
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <span className="error">{errors.email}</span>
-
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <span className="error">{errors.password}</span>
-
-        <label>Confirm Password:</label>
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <span className="error">{errors.confirmPassword}</span>
-
-        <label>Date of Birth:</label>
-        <input
-          type="date"
-          value={dob}
-          onChange={(e) => setDob(e.target.value)}
-        />
-        <span className="error">{errors.dob}</span>
-
-        <p><strong>Interest Level:</strong></p>
-
-        <label>
-          <input
-            type="radio"
-            value="beginner"
-            checked={level === "beginner"}
-            onChange={(e) => setLevel(e.target.value)}
-          />
-          Beginner
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            value="intermediate"
-            checked={level === "intermediate"}
-            onChange={(e) => setLevel(e.target.value)}
-          />
-          Intermediate
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            value="expert"
-            checked={level === "expert"}
-            onChange={(e) => setLevel(e.target.value)}
-          />
-          Expert
-        </label>
-
-        <span className="error">{errors.level}</span>
-
-        <br /><br />
-
-        <label>
-          <input
-            type="checkbox"
-            checked={terms}
-            onChange={(e) => setTerms(e.target.checked)}
-          />
-          I agree to the terms and conditions
-        </label>
-
-        <span className="error">{errors.terms}</span>
-
-        <br /><br />
-
-        <button type="submit">Register</button>
-
-      </form>
-
     </section>
   );
 }

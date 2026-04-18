@@ -39,7 +39,7 @@ function HomePage({ isLoggedIn }) {
   return (
     <>
       {/* HERO SECTION */}
-      <section className="hero">
+      <section className="hero fade-in-up">
         <div className="hero-content">
 
           <div className="hero-text">
@@ -47,6 +47,10 @@ function HomePage({ isLoggedIn }) {
             <p>
               Frontend Developer | Future MERN Developer
             </p>
+            <div className="hero-actions">
+              <a href="#posts" className="btn">View My Work</a>
+              <a href="/contact" className="btn btn-outline">Get In Touch</a>
+            </div>
           </div>
 
           <div className="hero-image">
@@ -62,23 +66,27 @@ function HomePage({ isLoggedIn }) {
 
 
       {/* POSTS SECTION (MAIN FEATURE NA 🔥) */}
-      <section className="posts">
+      <section id="posts" className="posts fade-in-up">
         <h2>Latest Posts</h2>
 
         <div className="posts-grid">
 
           {posts.length === 0 ? (
-            <p>No posts yet</p>
+            <div className="empty-state">
+              <h3>No posts yet</h3>
+              <p>Check back soon for new content!</p>
+            </div>
           ) : (
-            posts.map(post => (
-              <PostCard 
-                key={post._id}
-                post={post}
-                isLoggedIn={isLoggedIn}
-                role={role} // 🔥 ADD THIS
-                onDelete={handleDeletePost}
-                onUpdate={handleUpdatePost}
-              />
+            posts.map((post, index) => (
+              <div key={post._id} className="fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                <PostCard
+                  post={post}
+                  isLoggedIn={isLoggedIn}
+                  role={role}
+                  onDelete={handleDeletePost}
+                  onUpdate={handleUpdatePost}
+                />
+              </div>
             ))
           )}
 
