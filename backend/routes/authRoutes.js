@@ -84,8 +84,26 @@ router.post("/register", async (req, res) => {
 
     res.status(201).json({ message: "User registered successfully" });
 
+});
+
+// TEMPORARY ROUTE: Make user admin (remove after use)
+router.post("/make-admin", async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    const user = await User.findOneAndUpdate(
+      { email: (email || "").trim().toLowerCase() },
+      { role: "admin" },
+      { new: true }
+    );
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ message: "User promoted to admin", user: { email: user.email, role: user.role } });
   } catch (err) {
-    console.error("REGISTER ERROR:", err);
+    console.error("MAKE ADMIN ERROR:", err);
     res.status(500).json({ message: "Server error" });
   }
 });
