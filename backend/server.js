@@ -26,9 +26,14 @@ app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/contacts", contactRoutes);
 
+app.get("/", (req, res) => {
+  res.send("TheFolio backend is running");
+});
+
 // ✅ SERVER (LAST lagi)
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
 
 // note: postRoutes already mounted once above
