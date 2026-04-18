@@ -1,0 +1,17 @@
+body.dark-mode {
+    --primary-color: #1a1a2e;
+    --bg-color: #121212;
+    color: white;
+}
+
+body.dark-mode section {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode header {
+    background-color: #1a1a2e;
+}
+
+body.dark-mode footer {
+    background-color: #1a1a2e;
+}

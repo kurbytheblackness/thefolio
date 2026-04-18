@@ -1,0 +1,54 @@
+:root {
+    --primary-color: #2b2d42;
+    --secondary-color: #b1caf4;
+    --accent-color: #ef233c;
+    --bg-color: #edf2f4;
+    --font-main: 'Roboto', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background 0.4s, color 0.4s, border-color 0.4s;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: #2b2d42;
+    line-height: 1.6;
+}
+
+/* Section */
+section {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: auto;
+}
+
+section h2 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+button,
+input[type="submit"] {
+    background-color: var(--secondary-color);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    color: #2b2d42;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
