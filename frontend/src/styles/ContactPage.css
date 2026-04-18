@@ -123,7 +123,23 @@
 .resources-links a:hover {
   text-decoration: underline;
 }
+.contact-map-section {
+  text-align: center;
+}
 
+.contact-map-container {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.contact-map-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
   .contact-container {

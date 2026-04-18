@@ -142,7 +142,19 @@ function Contact() {
           </a>
         </div>
       </section>
+
+      <section className="contact-section contact-map-section">
+        <h2>Visit Us</h2>
+        <div className="contact-map-container">
+          <img
+            src="/assets/loc.png"
+            alt="Contact location map"
+            className="contact-map-image"
+          />
+        </div>
+      </section>
     </div>
+    
   );
 }
 
