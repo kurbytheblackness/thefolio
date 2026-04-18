@@ -39,7 +39,7 @@ function Contact() {
     setLoading(true);
 
     try {
-      const res = await API.post("/contacts", {
+      await API.post("/contacts", {
         name,
         email,
         message
