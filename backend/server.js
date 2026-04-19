@@ -27,6 +27,21 @@ app.use("/api/posts", postRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/contacts", contactRoutes);
 
+// ✅ SERVE REACT BUILD FILES (if build exists)
+const reactBuildPath = path.join(__dirname, "../frontend/build");
+if (require("fs").existsSync(reactBuildPath)) {
+  app.use(express.static(reactBuildPath));
+
+  // ✅ CATCH-ALL ROUTE: serve React app for any unmatched routes
+  app.get("*", (req, res) => {
+    // Skip API routes
+    if (req.path.startsWith("/api/") || req.path.startsWith("/uploads/")) {
+      return res.status(404).send("Not found");
+    }
+    res.sendFile(path.join(reactBuildPath, "index.html"));
+  });
+}
+
 app.get("/", (req, res) => {
   res.send("TheFolio backend is running");
 });
