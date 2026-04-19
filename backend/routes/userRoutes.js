@@ -6,10 +6,13 @@ const multer = require("multer");
 const path = require("path");
 const { authMiddleware, isAdmin } = require("../middleware/auth");
 
+const uploadPath = path.join(__dirname, "../uploads");
+const buildUploadUrl = (req, filename) => `${req.protocol}://${req.get("host")}/uploads/${filename}`;
+
 // 🔹 Multer config for avatar uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/"); // folder to save avatar images
+    cb(null, uploadPath); // folder to save avatar images
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1E9);
@@ -97,7 +100,7 @@ router.put("/me", authMiddleware, upload.single("avatar"), async (req, res) => {
 
     // Handle avatar upload or URL
     if (req.file) {
-      userUpdate.avatar = `/uploads/${req.file.filename}`;
+      userUpdate.avatar = buildUploadUrl(req, req.file.filename);
     } else if (avatarUrl) {
       userUpdate.avatar = avatarUrl;
     }

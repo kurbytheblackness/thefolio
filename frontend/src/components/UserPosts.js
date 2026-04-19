@@ -35,7 +35,7 @@ function UserPosts({ posts, onDelete, userRole, onRefresh }) {
       <div className="posts-grid">
         {posts.map((post) => (
           <article key={post._id} className="post-card">
-            {post.image && <img className="post-image" src={`${API_BASE}${post.image}`} alt={post.title || "Post image"} />}
+            {post.image && <img className="post-image" src={post.image.startsWith("http") ? post.image : `${API_BASE}${post.image}`} alt={post.title || "Post image"} />}
             <div className="post-content">
               <h3 className="post-title">{post.title || "Untitled"}</h3>
               <p className="post-text">{post.content}</p>

@@ -388,7 +388,7 @@ function MyProfile() {
                 <div key={post._id} className="post-card">
                   {post.image && (
                     <img
-                      src={`${API_BASE}${post.image}`}
+                      src={post.image.startsWith("http") ? post.image : `${API_BASE}${post.image}`}
                       alt={post.title || "Post"}
                       className="post-image"
                     />

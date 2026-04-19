@@ -278,7 +278,7 @@ function AdminDashboard() {
                   <div className="user-info">
                     <div className="user-avatar">
                       <img
-                        src={user.avatar ? `${API_BASE}${user.avatar}` : `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name || user.username)}&background=007bff&color=fff`}
+                        src={user.avatar ? (user.avatar.startsWith("http") ? user.avatar : `${API_BASE}${user.avatar}`) : `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name || user.username)}&background=007bff&color=fff`}
                         alt="Avatar"
                       />
                     </div>
@@ -418,7 +418,7 @@ function AdminDashboard() {
                     {selectedPost.image && (
                       <div className="modal-image">
                         <img
-                          src={`${API_BASE}${selectedPost.image}`}
+                          src={selectedPost.image.startsWith("http") ? selectedPost.image : `${API_BASE}${selectedPost.image}`}
                           alt={selectedPost.title || "Post"}
                         />
                       </div>

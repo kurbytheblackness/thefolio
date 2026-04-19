@@ -142,7 +142,7 @@ function PostCard({ post, isLoggedIn, role, onDelete, onUpdate }) {
 
           {post.image && (
             <img
-              src={`${API_BASE}${post.image}`}
+              src={post.image.startsWith("http") ? post.image : `${API_BASE}${post.image}`}
               alt="Post"
               style={{
                 width: "100%",
